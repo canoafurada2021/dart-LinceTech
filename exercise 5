@@ -1,0 +1,63 @@
+
+//5 — Escreva um programa que gere sugestões de nomes, com base em listas pré-definidas de nomes e sobrenomes.
+import 'dart:math' as math;
+
+const ListaNomes = [
+  'Ana',
+  'Maria',
+  'Francisco',
+  'João',
+  'Pedro',
+  'Gabriel',
+  'Rafaela',
+  'Marcio',
+  'Jose',
+  'Carlos',
+  'Patricia',
+  'Helena',
+  'Camila',
+  'Mateus',
+  'Gabriel',
+  'Samuel',
+  'Karina',
+  'Antonio',
+  'Daniel',
+  'Joel',
+  'Cristiana',
+  'Sebastião',
+  'Paula'
+];
+
+const ListaSobrenomes = [
+    'Silva',
+  'Souza',
+  'Almeida',
+  'Azevedo',
+  'Braga',
+  'Barros',
+  'Campos',
+  'Cardoso',
+  'Costa',
+  'Teixeira',
+  'Santos',
+  'Rodrigues',
+  'Ferreira',
+  'Alves',
+  'Pereira',
+  'Lima',
+  'Gomes',
+  'Ribeiro',
+  'Carvalho',
+  'Lopes',
+  'Barbosa'
+];
+
+void main() {
+  final aleatorio = math.Random();
+  final nomeGerado = ListaNomes[aleatorio.nextInt(ListaNomes.length)];
+  final sobrenomeGerado = ListaSobrenomes[aleatorio.nextInt(ListaSobrenomes.length)];
+  final nomeCompleto = '$nomeGerado $sobrenomeGerado';
+  
+  print("Nome gerado: $nomeCompleto");
+  
+}
