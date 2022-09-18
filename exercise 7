@@ -1,0 +1,44 @@
+
+
+//7 — Escreva um programa que receba uma lista de números inteiros, e retorne o somatorio dos números na lista. Implemente essa função em três modelos:
+void main() {
+  final listaNumeros = [10, 35, 999, 126, 95, 7, 348, 462, 43, 109];
+  final calculaFor = calculaEmFor(listaNumeros);
+  final calculaWhile = calculaEmWhile(listaNumeros);
+  final calculaLista = calculaEmLista(listaNumeros);
+  final calculaRecursivo = calculaEmRecursivo(listaNumeros);
+
+  print("Recursivo: $calculaRecursivo");
+  print("Lista: $calculaLista");
+  print("While: $calculaWhile");
+  print("For: $calculaFor");
+}
+
+int calculaEmFor(List<int> listaNumeros) {
+  var totalNumeros = 0;
+
+  for (final numeros in listaNumeros) {
+    totalNumeros += numeros;
+  }
+  return totalNumeros;
+}
+
+int calculaEmWhile(List<int> listaNumeros) {
+  var totalNumeros = 0;
+  final iterator = listaNumeros.iterator;
+  while (iterator.moveNext()) {
+    totalNumeros += iterator.current;
+  }
+  return totalNumeros;
+}
+
+int calculaEmLista(List<int> listaNumeros) {
+  return listaNumeros.reduce((a, b) => a + b);
+}
+
+int calculaEmRecursivo(List<int> listaNumeros) {
+  if (listaNumeros.isNotEmpty) {
+    return listaNumeros.first + calculaEmRecursivo(listaNumeros.sublist(1));
+  }
+  return 0;
+}
