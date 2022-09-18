@@ -1,0 +1,25 @@
+//Escreva um programa que converta uma lista temperaturas de celcius para Fahrenheit e Kelvin.
+
+void main() {
+  final listaTemperaturas = [0.0, 4.2, 15.0, 18.1, 21.7, 32.0, 40.0, 41.0];
+  converteTemperatura(listaTemperaturas);
+ }
+
+ double celciusPFarenheight(num celcius) {
+  return (celcius * 9 / 5 + 32);
+ }
+
+ double celciusPKelvin(num celcius) {
+  return (celcius + 273.15);
+ }
+
+void converteTemperatura(List<double> temperaturas) {
+  for (final grausCelcius in temperaturas) {
+    final grauEmFarenheit = celciusPFarenheight(grausCelcius);
+    final grauEmKelvin = celciusPKelvin(grausCelcius);
+
+    print("Graus Celcius ${grausCelcius.toStringAsFixed(2)}");
+    print("Graus Ferenheit ${grauEmFarenheit.toStringAsFixed(2)}");
+    print("Graus Kelvin ${grauEmKelvin.toStringAsFixed(2)}");
+  }
+}
