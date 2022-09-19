@@ -1,0 +1,77 @@
+// 3 — Escreva um programa que receba um parágrafo, e imprima no console as seguintes informações:
+
+
+final vogais = 'aeiou';
+final consolantes = 'bcdfghjklmnpqrstvwxyz';
+void main() {
+  final paragrafo =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis nunc et posuere vehicula. Mauris lobortis quam id lacinia porttitor.';
+  final contadorPalavras = contaPalavras(paragrafo);
+  final contadorTamanho = calculaTamanho(paragrafo);
+  final contadorFrases = contaNumeroFrase(paragrafo);
+  final contadorVogais = contaNumeroVogais(paragrafo);
+  final contadorConsolantes = pegaConsolantes(paragrafo);
+  
+  print("Contador de palavras: ${contadorPalavras}");
+  print("Tamanho do texto:${contadorTamanho}");
+    print("Contador de frases:${contadorFrases}");
+      print("Contador de vogais:${contadorVogais}");
+        print("Contador de consolantes: ${contadorConsolantes}");
+
+}
+
+int contaPalavras(String paragrafo) {
+ if (paragrafo.trim().isEmpty) {
+    return 0;
+  }
+  return paragrafo.split(' ').length;
+}
+
+int calculaTamanho(String paragrafo) {
+  return paragrafo.trim().length;
+}
+
+int contaNumeroFrase(String paragrafo) {
+  int contadorFrases = 0;
+
+  final frases = paragrafo.trim().split('.');
+  for (final frase in frases) {
+    if (frase.isNotEmpty) {
+      contadorFrases++;
+    }
+  }
+  return contadorFrases;
+}
+
+int contaNumeroVogais(String paragrafo) {
+  int contadorVogais = 0;
+
+  final frases = paragrafo.trim().runes;
+  for (final rune in frases) {
+    final caracteres = String.fromCharCode(rune).toLowerCase();
+    if (vogais.contains(caracteres)) {
+      contadorVogais++;
+    }
+  }
+
+  return contadorVogais;
+}
+
+String pegaConsolantes(String paragrafo){
+  //mapa de string
+  final consolantesEncontradas = <String>{};
+  for (final rune in paragrafo.trim().runes){
+  final caractere = String.fromCharCode(rune).toLowerCase();
+final consolante = consolantes.contains(caractere);
+    if(!consolante){
+      continue;
+    }
+final jaEncontradas = consolantesEncontradas.contains(caractere);
+    if(!jaEncontradas){
+      consolantesEncontradas.add(caractere);
+    }
+  }
+final ordenado = (consolantesEncontradas.toList()..sort());
+  
+  return ordenado.join(',');
+  }
